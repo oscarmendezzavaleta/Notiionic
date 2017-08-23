@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { NotesService } from '../../services/notes.service'
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,9 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
+notes=[];
+  constructor(public navCtrl: NavController ,public notesService:NotesService) {
+this.notes=notesService.getNotes();
   }
 
 }
