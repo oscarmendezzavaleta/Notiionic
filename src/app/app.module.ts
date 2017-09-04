@@ -7,7 +7,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NotesService } from '../services/notes.service';
-import {DetailPage} from '../pages/detail/detail'
+import {DetailPage} from '../pages/detail/detail';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyA5Jx3Z8GNqCPnUW9ybpoZ444BoYjmnOE8",
+  authDomain: "notionic-cd139.firebaseapp.com",
+  databaseURL: "https://notionic-cd139.firebaseio.com",
+  storageBucket: "notionic-cd139.appspot.com",
+  messagingSenderId: '758885373712'
+};
 
 @NgModule({
   declarations: [
@@ -17,7 +29,10 @@ import {DetailPage} from '../pages/detail/detail'
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
