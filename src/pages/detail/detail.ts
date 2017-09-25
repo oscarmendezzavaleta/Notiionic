@@ -14,8 +14,8 @@ import {NotesService} from '../../services/notes.service';
   templateUrl: 'detail.html',
 })
 export class DetailPage {
-  
-note ={id:null,title:null,description:null , tipo:null};
+
+note ={id:null,title:null,description:null , tipo:null,os:null};
 id:null;
 
 toatsOption:ToastOptions  
