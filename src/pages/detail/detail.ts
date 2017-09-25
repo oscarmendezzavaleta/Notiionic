@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,ToastController, ToastOptions,AlertController } from 'ionic-angular';
 import {NotesService} from '../../services/notes.service';
 /**
  * Generated class for the DetailPage page.
@@ -14,10 +14,17 @@ import {NotesService} from '../../services/notes.service';
   templateUrl: 'detail.html',
 })
 export class DetailPage {
-note ={id:null,title:null,description:null};
+  
+note ={id:null,title:null,description:null , tipo:null};
 id:null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams ,public notesSservice:NotesService) {
+toatsOption:ToastOptions  
+
+  constructor(public navCtrl: NavController, public navParams: NavParams ,public notesSservice:NotesService,private toast:ToastController ,public alertCtrl: AlertController) {
+
+    
+
+
     this.id=navParams.get('id');
     if(this.id !=0){    
       notesSservice.getNote(this.id)
@@ -36,18 +43,60 @@ id:null;
   addNote(){
     if(this.id !=0){  
       this.notesSservice.editNote(this.note);
-      alert('Nota Modificada con Exito');
+
+      this.toatsOption={
+        message:'Se Modifico Correctamente!',
+        duration:3000,
+        position:'top',
+        closeButtonText:'cerrar',
+        showCloseButton:true
+      }
+
+      this.toast.create(this.toatsOption).present();
+      
     }else{
       this.note.id=Date.now();
       this.notesSservice.createNote(this.note);
-      alert('Nota Creada con Exito');      
+
+      let alert = this.alertCtrl.create({
+        title: 'Operacion',
+        subTitle: 'Se Creo Correctamente la Nota!',
+        buttons: ['OK']
+      });
+      alert.present();
+      
+
+
     }
     this.navCtrl.pop();     
     
   }
   deleteNote(){
-    this.notesSservice.deleteNote(this.note);
-    alert('Nota Elininada con Exito');
-    this.navCtrl.pop();     
+    
+    let confirm = this.alertCtrl.create({
+      title: 'Notionic',
+      message: 'Desea eliminar la Nota?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            this.notesSservice.deleteNote(this.note);
+            this.navCtrl.pop();   
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+    
+
+
+      
   }
 }

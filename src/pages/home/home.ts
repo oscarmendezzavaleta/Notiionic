@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {  NavController } from 'ionic-angular';
 import { NotesService } from '../../services/notes.service';
 import { DetailPage } from '../detail/detail'
+
 
 @Component({
   selector: 'page-home',
@@ -11,7 +12,7 @@ export class HomePage {
 
   notes = [];
   @ViewChild('myNav') nav: NavController;
-  constructor(public navCtrl: NavController, public notesService: NotesService) {
+  constructor(public navCtrl: NavController, public notesService: NotesService ) {
     notesService.getNotes()
       .subscribe(notas => {
         this.notes = notas;
@@ -26,5 +27,7 @@ export class HomePage {
     this.navCtrl.push(DetailPage, { id: 0 });
   }
 
+
+  
 
 }

@@ -26,6 +26,14 @@
       <ion-textarea [(ngModel)]="note.description"></ion-textarea>
     </ion-item>
 
+    <ion-item>
+      <ion-label>Tipo</ion-label>
+      <ion-select [(ngModel)]="note.tipo">
+        <ion-option value="A">A</ion-option>
+        <ion-option value="B">B</ion-option>
+      </ion-select>
+    </ion-item>
+
   </ion-list>
   <div padding>
     <button ion-button block (click)="addNote()">Guardar Nota</button>
