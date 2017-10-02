@@ -1,7 +1,9 @@
+import { HomePage } from './../home/home';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from './../../models/user';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RegisterPage } from "../register/register";
 
 
 /**
@@ -28,9 +30,15 @@ export class LoginPage {
     try {
 
       const result = this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password);
-      if (result) {
-        this.navCtrl.setRoot('HomePage');
-      }
+      result.then((user) => {
+        console.log(user);
+
+        this.navCtrl.setRoot(HomePage);
+
+      }).catch((e) => {
+        console.log(e)
+      })
+
 
     }
     catch (e) {
@@ -40,6 +48,6 @@ export class LoginPage {
   }
 
   register() {
-    this.navCtrl.push('RegisterPage');
+    this.navCtrl.push("RegisterPage");
   }
 }

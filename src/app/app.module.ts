@@ -27,12 +27,13 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
+    MyApp,   
     DetailPage,
     ListPage,
     ServicioPage,
-    LoginPage
+    LoginPage,
+    HomePage
+  
     
   ],
   imports: [
@@ -44,12 +45,13 @@ export const firebaseConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage,
+    MyApp,    
     DetailPage,
     ListPage,
     ServicioPage,
-    LoginPage
+    LoginPage,
+    HomePage
+  
 
   ],
   providers: [
