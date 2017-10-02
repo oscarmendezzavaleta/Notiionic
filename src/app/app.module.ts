@@ -1,3 +1,7 @@
+import { RegisterPage } from './../pages/register/register';
+import { LoginPage } from './../pages/login/login';
+import { ServicioPage } from './../pages/servicio/servicio';
+import { ListPage } from './../pages/list/list';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -26,6 +30,10 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     DetailPage,
+    ListPage,
+    ServicioPage,
+    LoginPage
+    
   ],
   imports: [
     BrowserModule,
@@ -38,7 +46,11 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    DetailPage
+    DetailPage,
+    ListPage,
+    ServicioPage,
+    LoginPage
+
   ],
   providers: [
     StatusBar,

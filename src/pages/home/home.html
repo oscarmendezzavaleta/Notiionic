@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
     <ion-title>
      Notionic v0.2
     </ion-title>
@@ -7,6 +10,7 @@
 </ion-header>
 
 <ion-content >
+    <button ion-button secondary menuToggle>Toggle Menu 3</button>
   <ion-list>
     <button ion-item *ngFor="let note of notes" (click)="goToDetail(note.id)">
       {{ note.title }}
